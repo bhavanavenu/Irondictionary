@@ -1,0 +1,35 @@
+<h1>Dictionary</h1>
+
+{{#if error}}
+  <p>
+  <strong>Error</strong>: {{error}}
+  </p>
+{{/if}}
+
+<form action="/entries" method="post">
+  <input type="text" name="originalWord" placeholder="Original">
+  <input type="text" name="convertedWord" placeholder="Converted">
+  <button>Create</button>
+</form>
+
+<br>
+<br>
+
+<table>
+  <thead>
+    <tr>
+      <th>Original</th>
+      <th>Converted</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each entries}}
+      <tr>
+        <td>{{this.originalWord}}</td>
+        <td>{{this.convertedWord}}</td>
+        <td><a href="/entries/{{this._id}}/delete">Delete</a></td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
